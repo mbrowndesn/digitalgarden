@@ -1,0 +1,23 @@
+
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Gallery from "../components/Gallery.astro";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const entries = await reader.collections.designs.all();
+
+const designs = entries.map((entry) => ({
+  title: entry.entry.title,
+  image: entry.entry.image,
+  date: entry.entry.date,
+}));
+---
+
+<BaseLayout title="Designs | My Digital Garden">
+  <main class="mx-auto w-full max-w-6xl px-6 py-10">
+    <h1 class="mb-8 text-5xl font-bold">Designs</h1>
+    <Gallery items={designs} />
+  </main>
+</BaseLayout>

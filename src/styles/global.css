@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --brown: #27221a;
+  --burnt-orange: #BC5B32;
+  --vintage-cream: #F1E5CF;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Outfit', sans-serif;
+
+  background-color: var(--brown);
+  color: var(--vintage-cream);
+
+background-image:
+  linear-gradient(rgba(241, 229, 207, 0.06) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(241, 229, 207, 0.06) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+}
+
+main {
+  width: 100%;
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}

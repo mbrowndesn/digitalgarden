@@ -1,16 +1,43 @@
+
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home | My Digital Garden">
+  <main class="mx-auto w-full max-w-7xl px-6 py-10">
+    <section class="relative flex min-h-[75vh] items-center overflow-hidden">
+
+      <!-- Background image -->
+      <img
+        src="/images/home.webp"
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+
+      <!-- Dark overlay for text readability -->
+      <div class="absolute inset-0 bg-black/40"></div>
+
+      <!-- Hero content -->
+      <div class="relative z-10 p-10 text-white">
+        <p class="text-xs font-bold tracking-widest text-white">
+          EWU DESIGN STUDENT
+        </p>
+
+        <h1 class="my-4 text-6xl font-bold md:text-8xl">
+          Macy Brown.
+        </h1>
+
+        <p class="max-w-lg text-xl">
+          Welcome to my little corner of the internet.
+        </p>
+
+        <a
+          href="/designs"
+          class="mt-6 inline-block bg-orange-700 px-6 py-3 text-white transition-transform hover:-translate-y-1"
+        >
+          Explore My Work
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

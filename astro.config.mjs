@@ -7,6 +7,8 @@ import keystatic from '@keystatic/astro';
 
 import cloudflare from '@astrojs/cloudflare';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // Keystatic's `local` storage writes to the filesystem, which the Cloudflare
 // workerd runtime can't do. Run `astro dev` in Node (no adapter) and only use
 // the Cloudflare adapter for build/preview/deploy.
@@ -16,4 +18,8 @@ const isDev = process.argv.includes('dev');
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic()],
   adapter: isDev ? undefined : cloudflare(),
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

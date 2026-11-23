@@ -1,0 +1,37 @@
+
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Designs", href: "/designs" },
+  { label: "Film", href: "/film" },
+  { label: "Notebook", href: "/notebook" },
+];
+---
+
+<nav
+  aria-label="Main navigation"
+  class="flex flex-wrap items-center justify-center gap-4 px-3 py-5 text-sm sm:gap-6 sm:px-6 sm:py-6 sm:text-base"
+>
+  {links.map((link) => {
+    const active =
+      link.href === "/"
+        ? currentPath === "/"
+        : currentPath.startsWith(link.href);
+
+    return (
+      <a
+        href={link.href}
+        aria-current={active ? "page" : undefined}
+        class:list={[
+          "text-[var(--forest-green)] transition-colors duration-200 hover:text-[var(--burnt-orange)]",
+          active && "text-[var(--burnt-orange)] underline underline-offset-8",
+        ]}
+      >
+        {link.label}
+      </a>
+    );
+  })}
+</nav>

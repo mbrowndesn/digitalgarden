@@ -1,0 +1,45 @@
+
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const entries = await reader.collections.notebook.all();
+
+const notes = entries.map((entry) => ({
+  slug: entry.slug,
+  title: entry.entry.title,
+  image: entry.entry.image,
+  description: entry.entry.description,
+}));
+---
+
+<BaseLayout title="Notebook | My Digital Garden">
+  <main class="mx-auto w-full max-w-6xl px-6 py-10">
+    <h1 class="mb-8 text-5xl font-bold">Notebook</h1>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {notes.map((note) => (
+        <a
+          href={`/notebook/${note.slug}`}
+          class="overflow-hidden border border-[var(--forest-green)] text-inherit no-underline transition-transform duration-300 hover:-translate-y-1"
+        >
+          {note.image && (
+            <img
+              src={note.image}
+              alt={note.title}
+              loading="lazy"
+              class="block h-56 w-full object-cover"
+            />
+          )}
+
+          <div class="p-5">
+            <h2 class="mb-2 text-xl font-semibold">{note.title}</h2>
+            <p>{note.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
